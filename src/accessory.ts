@@ -17,6 +17,7 @@ interface LightState {
 export class ESPHomeRGBWWAccessory {
   private service: Service;
   private mqttClient: mqtt.MqttClient;
+  private static readonly MAX_BRIGHTNESS = 255;
   
   private currentState = {
     on: false,
@@ -148,7 +149,7 @@ export class ESPHomeRGBWWAccessory {
       const state: LightState = JSON.parse(message);
       
       this.currentState.on = state.state === 'ON';
-      this.currentState.brightness = Math.round((state.brightness / 255) * 100);
+      this.currentState.brightness = Math.round((state.brightness / ESPHomeRGBWWAccessory.MAX_BRIGHTNESS) * 100);
 
       if (state.color && state.color.r !== undefined) {
         const hsv = this.rgbToHsv(state.color.r, state.color.g, state.color.b);
@@ -190,7 +191,7 @@ export class ESPHomeRGBWWAccessory {
 
   async setBrightness(value: CharacteristicValue) {
     this.currentState.brightness = value as number;
-    const brightness = Math.round((value as number / 100) * 255);
+    const brightness = Math.round((value as number / 100) * ESPHomeRGBWWAccessory.MAX_BRIGHTNESS);
     this.publishCommand({ brightness });
     this.platform.log.debug('Set Brightness ->', value);
   }
@@ -233,7 +234,7 @@ export class ESPHomeRGBWWAccessory {
     const rgb = this.hsvToRgb(
       this.currentState.hue,
       this.currentState.saturation,
-      100,
+      this.currentState.brightness,
     );
 
     this.publishCommand({
