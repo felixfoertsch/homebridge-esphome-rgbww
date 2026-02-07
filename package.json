@@ -1,0 +1,40 @@
+{
+  "name": "homebridge-esphome-rgbww",
+  "version": "1.0.0",
+  "description": "Homebridge plugin for ESPHome RGBWW lights with HSV support",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "esphome",
+    "rgbww",
+    "xiaomi",
+    "yeelight"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "homebridge": ">=1.3.0"
+  },
+  "dependencies": {
+    "mqtt": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "homebridge": "^1.7.0",
+    "typescript": "^5.3.3"
+  },
+  "author": "Felix Foertsch",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felixfoertsch/homebridge-esphome-rgbww.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felixfoertsch/homebridge-esphome-rgbww/issues"
+  },
+  "homepage": "https://github.com/felixfoertsch/homebridge-esphome-rgbww#readme"
+}

@@ -1,0 +1,65 @@
+{
+  "pluginAlias": "ESPHomeRGBWW",
+  "pluginType": "platform",
+  "singular": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "ESPHome RGBWW"
+      },
+      "lights": {
+        "title": "Lights",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "Unique ID",
+              "type": "string",
+              "required": true,
+              "placeholder": "bedside-lamp-4387-1962"
+            },
+            "name": {
+              "title": "Display Name",
+              "type": "string",
+              "required": true,
+              "placeholder": "Bedside Lamp Rechts"
+            },
+            "manufacturer": {
+              "title": "Manufacturer",
+              "type": "string",
+              "placeholder": "Yeelight"
+            },
+            "model": {
+              "title": "Model",
+              "type": "string",
+              "placeholder": "MJCTD02YL"
+            },
+            "mqtt_broker": {
+              "title": "MQTT Broker URL",
+              "type": "string",
+              "required": true,
+              "placeholder": "mqtt://192.168.23.20:1883"
+            },
+            "state_topic": {
+              "title": "State Topic",
+              "type": "string",
+              "required": true,
+              "placeholder": "bedside-lamp-4387-1962/light/bedside_lamp_rechts/state"
+            },
+            "command_topic": {
+              "title": "Command Topic",
+              "type": "string",
+              "required": true,
+              "placeholder": "bedside-lamp-4387-1962/light/bedside_lamp_rechts/command"
+            }
+          }
+        }
+      }
+    }
+  }
+}
