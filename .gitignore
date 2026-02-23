@@ -1,9 +1,6 @@
 # Dependencies
 node_modules/
 
-# Build output
-dist/
-
 # Logs
 *.log
 npm-debug.log*
@@ -20,3 +17,7 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# Agent notes
+AI_AGENT_REPORT.md
+LEARNINGS.md

@@ -13,9 +13,33 @@ A Homebridge plugin for ESPHome RGBWW lights with native HSV support and automat
 
 ## Installation
 
+### Install from GitHub (Homebridge Docker/Unraid, persistent)
+
+Run these commands inside the Homebridge container terminal:
+
 ```bash
-npm install -g homebridge-esphome-rgbww
+cd /homebridge
+npm uninstall homebridge-esphome-rgbww
+npm install --save git+https://github.com/felixfoertsch/homebridge-esphome-rgbww.git
 ```
+
+Then restart Homebridge:
+
+```bash
+hb-service restart
+```
+
+If `hb-service` is not available, restart the container from your Docker/Unraid UI.
+
+Verify the runtime entrypoint exists:
+
+```bash
+ls -l /homebridge/node_modules/homebridge-esphome-rgbww/dist/index.js
+```
+
+Important:
+- Install from `/homebridge` with `--save` so dependency metadata is persisted.
+- Do not use `npm -g install` inside the container.
 
 ## Configuration
 

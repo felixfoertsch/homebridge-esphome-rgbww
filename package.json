@@ -1,11 +1,21 @@
 {
   "name": "homebridge-esphome-rgbww",
-  "version": "1.0.0",
+  "version": "2026.02.23",
   "description": "Homebridge plugin for ESPHome RGBWW lights with HSV support",
   "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "config.schema.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf dist",
+    "pretest": "npm run build",
+    "test": "node --test test/smoke.test.mjs",
     "watch": "tsc -w",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
