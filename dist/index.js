@@ -1,6 +1,6 @@
 "use strict";
-const { ESPHomeRGBWWPlatform } = require("./platform");
-
+const platform_1 = require("./platform");
 module.exports = (api) => {
-	api.registerPlatform("homebridge-esphome-rgbww", "ESPHomeRGBWW", ESPHomeRGBWWPlatform);
+    api.registerPlatform('homebridge-esphome-rgbww', 'ESPHomeRGBWW', platform_1.ESPHomeRGBWWPlatform);
 };
+//# sourceMappingURL=index.js.map

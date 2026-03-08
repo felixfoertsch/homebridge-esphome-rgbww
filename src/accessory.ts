@@ -149,9 +149,12 @@ export class ESPHomeRGBWWAccessory {
       const state: LightState = JSON.parse(message);
       
       this.currentState.on = state.state === 'ON';
-      this.currentState.brightness = Math.round((state.brightness / ESPHomeRGBWWAccessory.MAX_BRIGHTNESS) * 100);
 
-      if (state.color && state.color.r !== undefined) {
+      if (state.brightness != null && isFinite(state.brightness)) {
+        this.currentState.brightness = Math.round((state.brightness / ESPHomeRGBWWAccessory.MAX_BRIGHTNESS) * 100);
+      }
+
+      if (state.color && state.color.r != null && state.color.g != null && state.color.b != null) {
         const hsv = this.rgbToHsv(state.color.r, state.color.g, state.color.b);
         this.currentState.hue = hsv.h;
         this.currentState.saturation = hsv.s;

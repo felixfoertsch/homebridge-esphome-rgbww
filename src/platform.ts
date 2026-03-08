@@ -40,6 +40,10 @@ export class ESPHomeRGBWWPlatform implements DynamicPlatformPlugin {
 
       if (existingAccessory) {
         this.log.info('Restoring existing accessory from cache:', existingAccessory.displayName);
+        if (existingAccessory.displayName !== device.name) {
+          existingAccessory.displayName = device.name;
+          this.api.updatePlatformAccessories([existingAccessory]);
+        }
         new ESPHomeRGBWWAccessory(this, existingAccessory, device);
       } else {
         this.log.info('Adding new accessory:', device.name);
